@@ -27,7 +27,7 @@ static UIButton* contentView;
     [contentView setTitle:text forState:UIControlStateNormal];
     [contentView sizeToFit];
     [contentView addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
-    contentView.frame = CGRectMake(view.frame.size.width - contentView.bounds.size.width, 74, contentView.bounds.size.width, contentView.bounds.size.height);
+    contentView.frame = CGRectMake((view.frame.size.width - contentView.bounds.size.width)*0.5, 74, contentView.bounds.size.width, contentView.bounds.size.height);
     return contentView;
     
 }
