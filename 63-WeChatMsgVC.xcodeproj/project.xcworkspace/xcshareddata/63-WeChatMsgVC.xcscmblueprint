@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "980B9048E24B9A123BCA254E9737891CF1DE27DF",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "980B9048E24B9A123BCA254E9737891CF1DE27DF" : 9223372036854775807,
+    "DDE97A45152D06BAB7D0DE50BBF46B97CB854B85" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "4804080F-3216-44FF-B743-314B2DAC0247",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "980B9048E24B9A123BCA254E9737891CF1DE27DF" : "CFHookDebugByXocde\/",
+    "DDE97A45152D06BAB7D0DE50BBF46B97CB854B85" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "63-WeChatMsgVC",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "63-WeChatMsgVC.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/yuchuanfeng\/CFHookDebugByXocde.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "980B9048E24B9A123BCA254E9737891CF1DE27DF"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/yuchuanfeng\/CFHoveringTableViewDemo.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DDE97A45152D06BAB7D0DE50BBF46B97CB854B85"
+    }
+  ]
+}

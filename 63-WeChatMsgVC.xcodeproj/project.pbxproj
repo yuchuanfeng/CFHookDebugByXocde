@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8640AB1F1E0A3C0C00CE3E91 /* CFPreJailbreakCheck.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8640AB1D1E0A3C0C00CE3E91 /* CFPreJailbreakCheck.mm */; };
 		86A6C8031E092BA000CABE1C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A6C8021E092BA000CABE1C /* main.m */; };
 		86A6C8061E092BA000CABE1C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A6C8051E092BA000CABE1C /* AppDelegate.m */; };
 		86A6C8091E092BA000CABE1C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A6C8081E092BA000CABE1C /* ViewController.m */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8640AB1B1E0A331D00CE3E91 /* CAppViewControllerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAppViewControllerManager.h; sourceTree = "<group>"; };
+		8640AB1D1E0A3C0C00CE3E91 /* CFPreJailbreakCheck.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CFPreJailbreakCheck.mm; sourceTree = "<group>"; };
 		86A6C7F01E092AEB00CABE1C /* CContact.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContact.h; sourceTree = "<group>"; };
 		86A6C7F11E092AEB00CABE1C /* CContactMgr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CContactMgr.h; sourceTree = "<group>"; };
 		86A6C7F21E092AEB00CABE1C /* CMessageWrap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMessageWrap.h; sourceTree = "<group>"; };
@@ -96,6 +99,7 @@
 		86A6C7EB1E092AB200CABE1C /* heads */ = {
 			isa = PBXGroup;
 			children = (
+				8640AB1B1E0A331D00CE3E91 /* CAppViewControllerManager.h */,
 				86A6C8281E09362900CABE1C /* BaseMsgContentViewController.h */,
 				86A6C8271E09353F00CABE1C /* MMWebViewController.h */,
 				86A6C8261E092E6B00CABE1C /* CMessageMgr.h */,
@@ -168,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				86A6C7EB1E092AB200CABE1C /* heads */,
+				8640AB1D1E0A3C0C00CE3E91 /* CFPreJailbreakCheck.mm */,
 				86A6C81A1E092C7D00CABE1C /* CBMessageHud.h */,
 				86A6C81B1E092C7D00CABE1C /* CBMessageHud.m */,
 				86A6C81C1E092C7D00CABE1C /* CBNewestMsgManager.h */,
@@ -384,6 +389,7 @@
 				86A6C81F1E092C7D00CABE1C /* CBMessageHud.m in Sources */,
 				86D5742D1E07D15B00EE1484 /* _3_WeChatMsgVC.mm in Sources */,
 				86A6C8211E092C7D00CABE1C /* CBNewestMsgManager.m in Sources */,
+				8640AB1F1E0A3C0C00CE3E91 /* CFPreJailbreakCheck.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,7 +528,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(iOSOpenDevPath)/include/**";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = "$(iOSOpenDevPath)/lib/**";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -545,7 +551,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(iOSOpenDevPath)/include/**";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = "$(iOSOpenDevPath)/lib/**";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -606,6 +612,7 @@
 				86A6C8151E092BA000CABE1C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		86D574191E07D15B00EE1484 /* Build configuration list for PBXProject "63-WeChatMsgVC" */ = {
 			isa = XCConfigurationList;

@@ -13,7 +13,7 @@ static UIButton* contentView;
 
 @implementation CBMessageHud
 
-+ (void)showHUDInView:(UIView *)view text:(NSString *)text target:(id)target action:(SEL)selector
++ (UIButton *)showHUDInView:(UIView *)view text:(NSString *)text target:(id)target action:(SEL)selector
 {
     NSLog(@"showHuD === %@", text);
     if (!contentView)
@@ -28,6 +28,7 @@ static UIButton* contentView;
     [contentView sizeToFit];
     [contentView addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
     contentView.frame = CGRectMake(view.frame.size.width - contentView.bounds.size.width, 74, contentView.bounds.size.width, contentView.bounds.size.height);
+    return contentView;
     
 }
 

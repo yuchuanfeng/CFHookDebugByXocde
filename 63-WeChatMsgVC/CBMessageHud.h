@@ -10,6 +10,6 @@
 
 @interface CBMessageHud : NSObject
 
-+ (void)showHUDInView:(UIView *)view text:(NSString *)text target:(id)target action:(SEL)selector;
++ (UIButton *)showHUDInView:(UIView *)view text:(NSString *)text target:(id)target action:(SEL)selector;
 
 @end
