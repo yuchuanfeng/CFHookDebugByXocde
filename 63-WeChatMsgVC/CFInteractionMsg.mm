@@ -37,7 +37,6 @@ CHDeclareClass(CMessageWrap)
 CHDeclareClass(BaseMsgContentViewController)
 CHDeclareClass(MMWebViewController)
 
-UIViewController* getCurrentVC();
 void backToWebViewController(id self, SEL _cmd);
 void didReceiveNewMessage(id self, SEL _cmd);
 void backToMsgContentViewController(id self, SEL _cmd, id button);
@@ -80,13 +79,6 @@ CHMethod(0, void, MMWebViewController, viewDidLoad)
     
 }
 
-
-UIViewController* getCurrentVC(){
-    UIViewController *result = nil;
-    result = [objc_getClass("CAppViewControllerManager") topViewControllerOfWindow:[UIApplication sharedApplication].keyWindow];
-    NSLog(@"result = %@", result);
-    return result;
-}
 
 void backToWebViewController(id self, SEL _cmd){
     NSArray *webViewViewControllers = [CBNewestMsgManager sharedInstance].webViewViewControllers;
