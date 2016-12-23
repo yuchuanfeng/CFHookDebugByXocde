@@ -89,7 +89,7 @@ void backToWebViewController(id self, SEL _cmd){
 }
 
 void didReceiveNewMessage(id self, SEL _cmd){
-    UIViewController* currentVC = (UIViewController *)self;;
+    UIViewController* currentVC = [objc_getClass("CAppViewControllerManager") topViewControllerOfWindow:[UIApplication sharedApplication].keyWindow];
     if (![currentVC isKindOfClass:objc_getClass("MMWebViewController")])
     {
         return;
