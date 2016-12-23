@@ -17,6 +17,7 @@ CHMethod(1, void, CMessageMgr, onRevokeMsg, id, arg1)
     NSLog(@"\n>>>>>> onRevokeMsg <<<<<< \n arg1:[%@]%@ ", [arg1 class], arg1);
 }
 
+
 __attribute__((constructor)) static void entry()
 {
     CHLoadLateClass(CMessageMgr);

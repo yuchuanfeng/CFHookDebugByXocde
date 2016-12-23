@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		860E156B1E0BF95A003544BD /* CFAutoGetRedEnv.mm in Sources */ = {isa = PBXBuildFile; fileRef = 860E156A1E0BF95A003544BD /* CFAutoGetRedEnv.mm */; };
 		8640AB1F1E0A3C0C00CE3E91 /* CFPreJailbreakCheck.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8640AB1D1E0A3C0C00CE3E91 /* CFPreJailbreakCheck.mm */; };
 		8640AB231E0A521500CE3E91 /* CFPreRevokeMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = 8640AB211E0A521500CE3E91 /* CFPreRevokeMsg.m */; };
 		86A6C8031E092BA000CABE1C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A6C8021E092BA000CABE1C /* main.m */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		860E156A1E0BF95A003544BD /* CFAutoGetRedEnv.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CFAutoGetRedEnv.mm; sourceTree = "<group>"; };
 		8640AB1B1E0A331D00CE3E91 /* CAppViewControllerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAppViewControllerManager.h; sourceTree = "<group>"; };
 		8640AB1D1E0A3C0C00CE3E91 /* CFPreJailbreakCheck.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CFPreJailbreakCheck.mm; sourceTree = "<group>"; };
 		8640AB211E0A521500CE3E91 /* CFPreRevokeMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFPreRevokeMsg.m; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				86A6C7EB1E092AB200CABE1C /* heads */,
+				860E156A1E0BF95A003544BD /* CFAutoGetRedEnv.mm */,
 				8640AB211E0A521500CE3E91 /* CFPreRevokeMsg.m */,
 				8640AB1D1E0A3C0C00CE3E91 /* CFPreJailbreakCheck.mm */,
 				86A6C81A1E092C7D00CABE1C /* CBMessageHud.h */,
@@ -348,7 +351,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		86A6C8181E092BD200CABE1C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -357,7 +360,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n\n#set -e\n\nBUNDLEIDENTIFIER=come.tencent.xin\nAPPLICATIONIDENTIFIER=***.${BUNDLEIDENTIFIER}\nORIGINDIR=$(pwd)\nWECHATFILEPATH=***/WeChat\nTEMPDIR=$(mktemp -d)\nWeChatObjectPath=$BUILT_PRODUCTS_DIR\nLIBNAME=$(find  $WeChatObjectPath -name \"*.dylib\" -maxdepth 1)\n\necho \"origindir ===  $ORIGINDIR ====\"\necho \"ApplicationIdentifier === $APPLICATIONIDENTIFIER ===\"\necho \"WeChatObjectPath === $WeChatObjectPath ===\"\n\n\n\nfunction handleFiles(){\n    # 1.unzip ipa\n    \n    if [ $arch == \"arm64\" ]\n    then\n    unzip -qo ${WECHATFILEPATH}/WeChat6.3.3.ipa -d $TEMPDIR\n    else\n    unzip -qo ${WECHATFILEPATH}/WeChat6.3.3.ipa -d $TEMPDIR\n    fi\n    \n    # 2.copy files\n    cp ${WECHATFILEPATH}/embedded.mobileprovision $TEMPDIR/\n    cp ${WECHATFILEPATH}/entitlements.plist $TEMPDIR/\n    cp yololib $TEMPDIR/\n    \n    cd $WeChatObjectPath\n    LIBNAME=$(find *.dylib -maxdepth 1)\n    cp ${LIBNAME} $TEMPDIR/\n    echo \"LibName === $LIBNAME ===\"\n}\n\nfunction resign(){\n    # 3.resign\n    cd $TEMPDIR\n    plutil -replace application-identifier -string ${APPLICATIONIDENTIFIER} entitlements.plist\n    plutil -replace CFBundleIdentifier -string ${BUNDLEIDENTIFIER} Payload/WeChat.app/Info.plist\n    \n    ./yololib  Payload/WeChat.app/WeChat ${LIBNAME}\n    echo \"yololib install success\"\n    # mv Payload/WeChat.app/WeChat_patched Payload/WeChat.app/WeChat\n    cp ${LIBNAME}  Payload/WeChat.app/\n    chmod +x Payload/WeChat.app/WeChat\n    \n    rm -rf Payload/WeChat.app/_CodeSignature\n    rm -rf Payload/WeChat.app/PlugIns\n    rm -rf Payload/WeChat.app/Watch\n    cp embedded.mobileprovision Payload/WeChat.app/\n    echo \"start sign\"\n    codesign -fs \"iPhone Developer: chuanfeng yu (96JZJ353JM)\"  Payload/WeChat.app/${LIBNAME}\n    codesign -fs \"iPhone Developer: chuanfeng yu (96JZJ353JM)\"  --entitlements=Entitlements.plist Payload/WeChat.app\n    echo \"start sign\"\n}\n\nfunction replaceFile(){\n    # chmod +x $WeChatObjectPath/WeChat.app\n    echo \"start move $WeChatObjectPath\"\n    cd $ORIGINDIR\n    rm -rf $WeChatObjectPath/WeChat.app\n    cd $TEMPDIR\n    mv Payload/WeChat.app ${WeChatObjectPath}\n    rm -rf ${TEMPDIR}\n    echo \"finish move $WeChatObjectPath\"\n}\n\nif [ $LIBNAME != NULL ]\nthen\nhandleFiles\nresign\nreplaceFile\nfi";
+			shellScript = "#!/bin/bash\n\n#set -e\n\nBUNDLEIDENTIFIER=come.tencent.xin\nAPPLICATIONIDENTIFIER=***.${BUNDLEIDENTIFIER}\nORIGINDIR=$(pwd)\nWECHATFILEPATH=***/WeChat\nTEMPDIR=$(mktemp -d)\nWeChatObjectPath=$BUILT_PRODUCTS_DIR\nLIBNAME=$(find  $WeChatObjectPath -name \"*.dylib\" -maxdepth 1)\n\necho \"origindir ===  $ORIGINDIR ====\"\necho \"ApplicationIdentifier === $APPLICATIONIDENTIFIER ===\"\necho \"WeChatObjectPath === $WeChatObjectPath ===\"\n\n\n\nfunction handleFiles(){\n    # 1.unzip ipa\n    \n    if [ $arch == \"arm64\" ]\n    then\n    unzip -qo ${WECHATFILEPATH}/WeChat-6.5.2.ipa -d $TEMPDIR\n    else\n    unzip -qo ${WECHATFILEPATH}/WeChat-6.5.2.ipa -d $TEMPDIR\n    fi\n    \n    # 2.copy files\n    cp ${WECHATFILEPATH}/embedded.mobileprovision $TEMPDIR/\n    cp ${WECHATFILEPATH}/entitlements.plist $TEMPDIR/\n    cp yololib $TEMPDIR/\n    \n    cd $WeChatObjectPath\n    LIBNAME=$(find *.dylib -maxdepth 1)\n    cp ${LIBNAME} $TEMPDIR/\n    echo \"LibName === $LIBNAME ===\"\n}\n\nfunction resign(){\n    # 3.resign\n    cd $TEMPDIR\n    #plutil -replace application-identifier -string ${APPLICATIONIDENTIFIER} entitlements.plist\n    plutil -replace CFBundleIdentifier -string ${BUNDLEIDENTIFIER} Payload/WeChat.app/Info.plist\n    \n    ./yololib  Payload/WeChat.app/WeChat ${LIBNAME}\n    echo \"yololib install success\"\n    # mv Payload/WeChat.app/WeChat_patched Payload/WeChat.app/WeChat\n    cp ${LIBNAME}  Payload/WeChat.app/\n    chmod +x Payload/WeChat.app/WeChat\n    \n    rm -rf Payload/WeChat.app/_CodeSignature\n    rm -rf Payload/WeChat.app/PlugIns\n    rm -rf Payload/WeChat.app/Watch\n    cp embedded.mobileprovision Payload/WeChat.app/\n    echo \"start sign\"\n    codesign -fs \"iPhone Developer: chuanfeng yu (96JZJ353JM)\"  Payload/WeChat.app/${LIBNAME}\n    codesign -fs \"iPhone Developer: chuanfeng yu (96JZJ353JM)\"  --entitlements=Entitlements.plist Payload/WeChat.app\n    echo \"start sign\"\n}\n\nfunction replaceFile(){\n    # chmod +x $WeChatObjectPath/WeChat.app\n    echo \"start move $WeChatObjectPath\"\n    cd $ORIGINDIR\n    rm -rf $WeChatObjectPath/WeChat.app\n    cd $TEMPDIR\n    mv Payload/WeChat.app ${WeChatObjectPath}\n    rm -rf ${TEMPDIR}\n    echo \"finish move $WeChatObjectPath\"\n}\n\nif [ $LIBNAME != NULL ]\nthen\nhandleFiles\nresign\nreplaceFile\nfi";
 		};
 		86D5741D1E07D15B00EE1484 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -392,6 +395,7 @@
 				86A6C81F1E092C7D00CABE1C /* CBMessageHud.m in Sources */,
 				86D5742D1E07D15B00EE1484 /* CFInteractionMsg.mm in Sources */,
 				86A6C8211E092C7D00CABE1C /* CBNewestMsgManager.m in Sources */,
+				860E156B1E0BF95A003544BD /* CFAutoGetRedEnv.mm in Sources */,
 				8640AB1F1E0A3C0C00CE3E91 /* CFPreJailbreakCheck.mm in Sources */,
 				8640AB231E0A521500CE3E91 /* CFPreRevokeMsg.m in Sources */,
 			);
